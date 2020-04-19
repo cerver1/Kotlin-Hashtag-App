@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/inputTextContainer"
+        android:id="@+id/input_text_container"
         android:layout_width="400dp"
         android:layout_height="400dp"
         app:layout_constraintVertical_bias=".15"
@@ -22,7 +22,7 @@
             android:layout_height="match_parent">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/inputText"
+                android:id="@+id/text_input"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="12sp"
@@ -35,44 +35,44 @@
 
 
     <TextView
-        android:id="@+id/outputText"
+        android:id="@+id/text_output"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="5sp"
         android:padding="10dp"
         app:layout_constraintVertical_bias="0"
-        app:layout_constraintTop_toBottomOf="@id/inputTextContainer"
+        app:layout_constraintTop_toBottomOf="@id/input_text_container"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="SmallSp" />
 
     <TextView
-        android:id="@+id/outputTextSized"
+        android:id="@+id/text_output_sized"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="12sp"
         android:padding="10dp"
         app:layout_constraintVertical_bias="0"
-        app:layout_constraintTop_toBottomOf="@id/outputText"
+        app:layout_constraintTop_toBottomOf="@id/text_output"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <com.google.android.material.button.MaterialButton
         style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:id="@+id/clearBtn"
+        android:id="@+id/button_clear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/clTitle"
         app:layout_constraintHorizontal_bias=".90"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/inputTextContainer"
+        app:layout_constraintBottom_toTopOf="@id/input_text_container"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/randomBtn"
+        android:id="@+id/button_random"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
