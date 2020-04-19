@@ -51,6 +51,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun copyTxt(text: TextView) {
         val myClip = ClipData.newPlainText("NewRandom", text.text)
-        myClipboard?.setPrimaryClip(myClip!!)
+        myClipboard.setPrimaryClip(myClip!!)
     }
 }
