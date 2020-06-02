@@ -1,3 +1,3 @@
 # Kotlin-Instagram-Hastag-Randomizer
 
-![](HashtagRandomizer.avi)
+![](HashtagRandomizer.gif)
