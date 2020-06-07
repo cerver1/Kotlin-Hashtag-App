@@ -85,7 +85,7 @@ private fun randomizedHashTagList(list: MutableList<String>, size: String ): Pai
 
     val adjustSize = if (randomizedList.size >= 30) 30 else randomizedList.size
     
-    val random = Random.nextInt(0, 30).toString().toInt()
+    val random = Random.nextInt(0, 30)
     
     // radio button group for to select size
     return when(size) {
