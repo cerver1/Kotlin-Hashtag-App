@@ -31,17 +31,13 @@ class MainActivity : AppCompatActivity() {
         with(binding) {
             buttonClear.setOnClickListener { textInput.setText("") }
             buttonRandom.setOnClickListener {
-                val listMain = (textInput.text)!!.removePrefix("#").replace("\\s".toRegex(), "")
-                    .split("#").sorted().reversed().shuffled().distinct().take(29).toString()
-                    .trim().replace("[", "#").replace(",", "#")
-                    .replace("\\s".toRegex(), "").removeSuffix("]")
+                
+                val validTags = validateHashTagList(textInput.text)
+                val randomTags = randomizedHashTagList(validTags,"random")
 
-                val listMain2 = (textInput.text)!!.removePrefix("#").replace("\\s".toRegex(), "")
-                    .split("#").sorted().reversed().shuffled().distinct().take(29).size.toString()
-
-                textOutput.text = listMain
-                textOutputSized.text = listMain2
-
+                textOutput.text = finalizeHashTags(randomTags.second)
+                textOutputSized.text = randomTags.first
+                
                 copyTxt(textOutput)
                 Toast.makeText(this@MainActivity, "Randomized and Copied", Toast.LENGTH_SHORT)
                     .show()
@@ -53,4 +49,41 @@ class MainActivity : AppCompatActivity() {
         val myClip = ClipData.newPlainText("NewRandom", text.text)
         myClipboard.setPrimaryClip(myClip!!)
     }
+    
+
+private fun finalizeHashTags(randomizedHashTags: String): String{
+
+    return randomizedHashTags.replace("\\s".toRegex(), "").replace("[", "#").replace(",", "#")
+        .replace("\\s".toRegex(), "").removeSuffix("]")
+
+}
+
+private fun validateHashTagList(hashTags: String): MutableList<String>{
+
+    val withSet = hashTags.split("#").toSet().toMutableList()
+    withSet.remove("")
+
+    return withSet
+}
+
+
+private fun randomizedHashTagList(list: MutableList<String>, size: String ): Pair<Int,String> {
+
+    val randomizedList = list.sorted().reversed().shuffled()
+
+    val adjustSize = if (randomizedList.size >= 30) 30 else randomizedList.size
+    
+    val random = Random.nextInt(0, 30).toString().toInt()
+    
+    // radio button group for to select size
+    return when(size) {
+        "small" -> Pair((adjustSize / 4), randomizedList.take(adjustSize / 4).toString())
+        "medium" -> Pair((adjustSize / 2), randomizedList.take( adjustSize / 2).toString())
+        "full" -> Pair(adjustSize, randomizedList.take(adjustSize).toString())
+        "random" -> Pair(random, randomizedList.take(random).toString())
+        else -> Pair(0, "Something went wrong :(")
+    }
+
+}
+    
 }
