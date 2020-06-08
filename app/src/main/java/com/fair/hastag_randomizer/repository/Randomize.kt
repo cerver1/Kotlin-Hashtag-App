@@ -14,7 +14,7 @@ class Randomize {
     fun validateHashTagList(hashTags: String): MutableList<String>{
 
         val withSet = hashTags.split("#").toSet().toMutableList()
-        withSet.remove("")
+        withSet.removeAll(mutableListOf("", "null"))
 
         return withSet
     }
