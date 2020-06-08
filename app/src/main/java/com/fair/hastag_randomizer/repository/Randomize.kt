@@ -19,7 +19,6 @@ class Randomize {
         return withSet
     }
 
-
     fun randomizedHashTagList(list: MutableList<String>, size: String ): Pair<Int,String> {
 
         val randomizedList = list.sorted().reversed().shuffled()
