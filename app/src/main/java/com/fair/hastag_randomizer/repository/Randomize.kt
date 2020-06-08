@@ -11,13 +11,18 @@ class Randomize {
 
     }
 
-    fun validateHashTagList(hashTags: String): MutableList<String>{
+    fun validateHashTagList(hashTags: String?): MutableList<String>{
 
+    return if (hashTags.isNullOrEmpty()){
+        mutableListOf("") }
+    else{
         val withSet = hashTags.split("#").toSet().toMutableList()
-        withSet.removeAll(mutableListOf("", "null"))
-
-        return withSet
+        withSet.remove("")
+        withSet
     }
+
+
+}
 
     fun randomizedHashTagList(list: MutableList<String>, size: String ): Pair<Int,String> {
 
