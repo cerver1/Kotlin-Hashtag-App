@@ -2,5 +2,10 @@
     <string name="app_name">Randomize</string>
     <string name="clTitle">Clear</string>
     <string name="save">save</string>
+    <string name="small">Small</string>
+    <string name="medium">Medium</string>
+    <string name="full">Full</string>
+    <string name="random">Random</string>
+    <string name="size">Size</string>
 
 </resources>

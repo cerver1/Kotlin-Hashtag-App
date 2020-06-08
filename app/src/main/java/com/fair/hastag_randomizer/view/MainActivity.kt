@@ -63,6 +63,9 @@ class MainActivity : AppCompatActivity() {
                     saveNew.searchHash(textInput.text.toString(), textOutputSized )
 
             }
+            buttonSize.setOnClickListener {
+                SizeDialog(this@MainActivity).showSizeDialog()
+            }
         }
     }
 
