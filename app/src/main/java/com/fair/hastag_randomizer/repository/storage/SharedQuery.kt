@@ -26,6 +26,31 @@ class SharedQuery(private val context: Context) {
         return
 
     }
+    
+    fun search(stored: String, new: String){
+
+    val savedList = validateHashTagList(stored)
+    val newList = validateHashTagList(new)
+
+    println(savedList.size)
+
+    if (savedList.isNotEmpty()){
+        for (i in newList){
+            if (i in savedList) continue else savedList.add(i)
+        }
+        println("new hashTags were added")
+    }else {
+        println("You have no saved HashTags")}
+
+    println(savedList.size)
+
+}
+
+fun save(stored: MutableList<String>, HashTag: String){
+
+    stored.add(HashTag)
+
+}
 
 
 
