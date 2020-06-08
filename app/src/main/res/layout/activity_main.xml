@@ -77,9 +77,21 @@
         android:layout_height="wrap_content"
         android:text="@string/app_name"
         app:cornerRadius="999dp"
-        app:layout_constraintVertical_bias=".90"
+        app:layout_constraintVertical_bias=".80"
         app:layout_constraintHorizontal_bias=".90"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/save"
+        app:cornerRadius="999dp"
+        app:layout_constraintHorizontal_bias=".90"
+        app:layout_constraintTop_toBottomOf="@id/button_random"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>

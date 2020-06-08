@@ -13,16 +13,16 @@ class Randomize {
 
     fun validateHashTagList(hashTags: String?): MutableList<String>{
 
-    return if (hashTags.isNullOrEmpty()){
-        mutableListOf("") }
-    else{
-        val withSet = hashTags.split("#").toSet().toMutableList()
-        withSet.remove("")
-        withSet
+        return if (hashTags.isNullOrEmpty()){
+            mutableListOf("") }
+        else{
+            val withSet = hashTags.split("#").toSet().toMutableList()
+            withSet.remove("")
+            withSet
+        }
+
+
     }
-
-
-}
 
     fun randomizedHashTagList(list: MutableList<String>, size: String ): Pair<Int,String> {
 

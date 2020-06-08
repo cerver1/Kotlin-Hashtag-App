@@ -1,61 +1,40 @@
 package com.fair.hastag_randomizer.repository.storage
 
 import android.content.Context
+import android.widget.TextView
 import com.fair.hastag_randomizer.repository.Randomize
 import com.fair.hastag_randomizer.repository.toast
 
 class SharedQuery(private val context: Context) {
+
     var rand = Randomize()
     var storage = SharedPreference(context)
+    var savedHashTag = storage.getStringValue("randomizeHashTagDataKey")
 
 
 
-    fun searchHash(HashTags: MutableList<String>){
-        val savedData = storage.getStringValue("randomizeHashTagDataKey")
-        if(savedData.isNullOrEmpty()) {
+    fun searchHash(newHashTag: String, storedDisplay: TextView){
+
+        val savedList = rand.validateHashTagList(savedHashTag)
+        val newList = rand.validateHashTagList(newHashTag)
+
+        if(savedList.isNullOrEmpty()) {
             context.toast("There aren't any saved Hashtags")
         } else {
-            val savedHashtags = storage.getStringValue("randomizeHashTagDataKey")
-            val savedHashTagList = rand.validateHashTagList(savedHashtags.toString())
+            for (i in newList){
+                if (i in savedList) continue else savedList.add(i)
 
-            for (i in HashTags){
-                if (i in savedHashTagList) continue else savedHashTagList.add(i)
+            storage.saveString("randomizeHashTagDataKey", rand.finalizeHashTags(savedList.toString()))
+            storedDisplay.text = savedHashTag
             }
         }
 
         return
 
     }
-    
-    fun search(stored: String, new: String){
 
-    val savedList = validateHashTagList(stored)
-    val newList = validateHashTagList(new)
-
-    println(savedList.size)
-
-    if (savedList.isNotEmpty()){
-        for (i in newList){
-            if (i in savedList) continue else savedList.add(i)
-        }
-        println("new hashTags were added")
-    }else {
-        println("You have no saved HashTags")}
-
-    println(savedList.size)
-
-}
-
-fun save(stored: MutableList<String>, HashTag: String){
-
-    stored.add(HashTag)
-
-}
 
 
 
 }
 
-
-
-fun storeHash()
