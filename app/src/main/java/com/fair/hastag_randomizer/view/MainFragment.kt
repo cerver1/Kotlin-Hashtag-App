@@ -1,31 +1,58 @@
 package com.fair.hastag_randomizer.view
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context.CLIPBOARD_SERVICE
 import android.os.Bundle
 import android.view.View
-import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.fair.hastag_randomizer.R
 import com.fair.hastag_randomizer.databinding.FragmentMainBinding
+import com.fair.hastag_randomizer.repository.Randomize
+import com.fair.hastag_randomizer.repository.toast
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
+
 
 class MainFragment: Fragment(R.layout.fragment_main) {
     
     private var _binding: FragmentMainBinding? = null
     private val viewBinding get() = _binding!!
+    private var rand: Randomize = Randomize()
+    private lateinit var myClipboard: ClipboardManager
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentMainBinding.bind(view)
+        myClipboard = activity?.getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
 
         viewBinding.apply {
 
             randomizeBtn.setOnClickListener {
-                val myList = listOf("#cerve","#instagram","#kotlin")
-                myList.forEach{
-                    addChip(it , chipContainer)
 
-                }
+                try {
+                    rand.apply {
+                        val userEntry = userInput.text.toString()
+                        val hashTagList = randomizedHashTagList(validateHashTagList(userEntry), "full")
+                        hashTagList.third.forEach {
+                            addChip(it , chipContainer)
+                        }
+                        if(userInput.isVisible){
+                            userInput.visibility = View.GONE
+                        }
+
+                        try {
+                            copy(finalizeHashTags(hashTagList.second))
+                        } catch(e: Exception) {
+                            context.toast("unable to copy hashtags")}
+
+
+
+
+                    }
+                }catch(e: Exception) {
+                    context.toast("Randomized and copied")}
 
             }
 
@@ -35,13 +62,16 @@ class MainFragment: Fragment(R.layout.fragment_main) {
 
     }
 
-    fun addChip(item: String, group: ChipGroup){
+    private fun addChip(item: String, group: ChipGroup){
         val chip = Chip(context)
         chip.text = item
-        chip.chipIcon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_launcher_foreground)
-
         chip.isCheckable = false
         group.addView(chip as View)
+    }
+
+    private fun copy(text: String) {
+        val myClip = ClipData.newPlainText("NewRandom", text)
+        myClipboard.setPrimaryClip(myClip!!)
     }
 
     override fun onDestroyView() {

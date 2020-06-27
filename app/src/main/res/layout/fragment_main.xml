@@ -5,7 +5,8 @@
     android:layout_height="match_parent">
 
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/userInput"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="top"
@@ -16,8 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:hint="@string/hint_content"
         android:autofillHints="#cerve"
-        android:inputType="text"
-        android:scrollbars="vertical"
+        android:inputType="textMultiLine"
         android:background="@android:color/transparent"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -34,10 +34,12 @@
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chipContainer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bottomGuide"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="30dp"
+        app:layout_constraintVertical_bias="1"
+        app:layout_constraintBottom_toTopOf="@id/bottomGuide"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
