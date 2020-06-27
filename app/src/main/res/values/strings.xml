@@ -7,5 +7,6 @@
     <string name="full">Full</string>
     <string name="random">Random</string>
     <string name="size">Size</string>
+    <string name="hint_content">content</string>
 
 </resources>
