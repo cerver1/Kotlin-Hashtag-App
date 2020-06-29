@@ -1,4 +1,4 @@
-# Kotlin Instagram Hastag Randomizer
+# Kotlin Instagram Hashtag Randomizer
 
 ## **:dizzy_face:Remove the confusion around hashtag selection!:dizzy_face:**
 

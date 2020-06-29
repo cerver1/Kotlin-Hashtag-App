@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <ListPreference
+        app:key="returnSize"
+        android:title="return size"
+        app:summary="Change the portion size of hashtags you get back"
+        android:icon="@drawable/ic_confirm"
+        android:entries="@array/returnSizeList"
+        android:entryValues="@array/returnSizeList"
+        android:defaultValue="@string/full"
+        android:dialogTitle="Return Size"
+        android:dialogMessage="Choose your return size"
+        android:positiveButtonText="Ok"
+        android:negativeButtonText="Cancel" />
+
+</PreferenceScreen>

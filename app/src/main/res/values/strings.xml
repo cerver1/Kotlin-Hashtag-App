@@ -8,5 +8,13 @@
     <string name="random">Random</string>
     <string name="size">Size</string>
     <string name="hint_content">content</string>
+    <string name="randomizer">Randomizer</string>
+
+    <string-array name="returnSizeList">
+        small,
+        medium,
+        large,
+        random
+    </string-array>
 
 </resources>

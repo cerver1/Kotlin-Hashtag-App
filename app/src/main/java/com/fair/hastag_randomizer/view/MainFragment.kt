@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import com.fair.hastag_randomizer.R
 import com.fair.hastag_randomizer.databinding.FragmentMainBinding
 import com.fair.hastag_randomizer.repository.Randomize
@@ -29,6 +30,10 @@ class MainFragment: Fragment(R.layout.fragment_main) {
 
         viewBinding.apply {
 
+            toSettingPage.setOnClickListener{
+                Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_settingsFragment)
+            }
+
             randomizeBtn.setOnClickListener {
 
                 try {
@@ -39,6 +44,7 @@ class MainFragment: Fragment(R.layout.fragment_main) {
                             addChip(it , chipContainer)
                         }
                         if(userInput.isVisible){
+                            chipGroupContainer.visibility = View.VISIBLE
                             userInput.visibility = View.GONE
                         }
 
