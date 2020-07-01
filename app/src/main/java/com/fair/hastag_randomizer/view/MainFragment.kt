@@ -28,13 +28,22 @@ class MainFragment: Fragment(R.layout.fragment_main) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setHasOptionsMenu(true)
         _binding = FragmentMainBinding.bind(view)
         myClipboard = activity?.getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
 
         viewBinding.apply {
 
-            toSettingPage.setOnClickListener{
-                Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_settingsFragment)
+            mainToolbar.inflateMenu(R.menu.menu_view)
+            mainToolbar.setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.action_settings -> {
+                        Navigation.findNavController(view)
+                            .navigate(R.id.action_mainFragment_to_settingsFragment)
+                        true
+                    }
+                    else -> super.onOptionsItemSelected(item)
+                }
             }
 
             randomizeBtn.setOnClickListener {
@@ -81,22 +90,6 @@ class MainFragment: Fragment(R.layout.fragment_main) {
     private fun copy(text: String) {
         val myClip = ClipData.newPlainText("NewRandom", text)
         myClipboard.setPrimaryClip(myClip!!)
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_view, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-
-    }
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle item selection
-        return when (item.itemId) {
-            R.id.action_settings -> {
-                view?.let { Navigation.findNavController(it).navigate(R.id.action_mainFragment_to_settingsFragment) }
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
     }
 
     override fun onDestroyView() {
