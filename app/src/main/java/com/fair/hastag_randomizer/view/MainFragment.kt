@@ -4,6 +4,9 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context.CLIPBOARD_SERVICE
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -78,6 +81,22 @@ class MainFragment: Fragment(R.layout.fragment_main) {
     private fun copy(text: String) {
         val myClip = ClipData.newPlainText("NewRandom", text)
         myClipboard.setPrimaryClip(myClip!!)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_view, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        return when (item.itemId) {
+            R.id.action_settings -> {
+                view?.let { Navigation.findNavController(it).navigate(R.id.action_mainFragment_to_settingsFragment) }
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     override fun onDestroyView() {

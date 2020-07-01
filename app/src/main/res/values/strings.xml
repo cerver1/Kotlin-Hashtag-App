@@ -9,6 +9,9 @@
     <string name="size">Size</string>
     <string name="hint_content">content</string>
     <string name="randomizer">Randomizer</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_share">Share</string>
+    <string name="action_exit">Exit</string>
 
     <string-array name="returnSizeList">
         small,
