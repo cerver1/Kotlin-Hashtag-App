@@ -10,7 +10,7 @@ import androidx.room.RoomDatabase
     version = 1)
 abstract class RandomizeDatabase: RoomDatabase() {
     abstract fun RandomizeDao(): RandomizeDao
-    /**
+
     companion object{
         @Volatile private var instance: RoomDatabase? = null
         private val LOCK = Any()
@@ -24,7 +24,6 @@ abstract class RandomizeDatabase: RoomDatabase() {
             .build()
     }
 
-*/
 }
 
 
