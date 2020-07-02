@@ -11,7 +11,10 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.fair.hastag_randomizer.databinding.ActivityMainBinding
 import com.fair.hastag_randomizer.repository.Randomize
+import com.fair.hastag_randomizer.repository.storage.RandomizeDatabase
 import com.fair.hastag_randomizer.repository.storage.SharedQuery
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     
@@ -33,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
 
 
