@@ -14,10 +14,10 @@
         android:background="@color/colorPrimaryDark">
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/mainToolbar"
+            android:id="@+id/storeToolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:title="@string/randomizer"
+            app:title="Storage"
             app:titleTextColor="@android:color/white"/>
 
 
