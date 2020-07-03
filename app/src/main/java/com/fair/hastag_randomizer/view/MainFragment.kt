@@ -9,15 +9,23 @@ import android.view.View
 import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelLazy
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.fair.hastag_randomizer.R
 import com.fair.hastag_randomizer.databinding.FragmentMainBinding
 import com.fair.hastag_randomizer.repository.Randomize
+import com.fair.hastag_randomizer.repository.RandomizeRepository
 import com.fair.hastag_randomizer.repository.snack
+import com.fair.hastag_randomizer.repository.storage.RandomizeDatabase
+import com.fair.hastag_randomizer.repository.storage.RandomizeEntity
 import com.fair.hastag_randomizer.repository.toast
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.snackbar.Snackbar
+import java.util.*
 
 
 class MainFragment: Fragment(R.layout.fragment_main) {
@@ -31,11 +39,14 @@ class MainFragment: Fragment(R.layout.fragment_main) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
         _binding = FragmentMainBinding.bind(view)
+
+
         myClipboard = activity?.getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
 
         viewBinding.apply {
 
             mainToolbar.inflateMenu(R.menu.menu_view)
+
             mainToolbar.setOnMenuItemClickListener { item ->
                 when (item.itemId) {
                     R.id.action_settings -> {
@@ -47,15 +58,19 @@ class MainFragment: Fragment(R.layout.fragment_main) {
                 }
             }
 
-            randomizeBtn.setOnClickListener {
+            saveBtn.setOnClickListener {
+                Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_storageFragment)
+            }
 
+            randomizeBtn.setOnClickListener {
+                val userEntry = userInput.text.toString()
                 //view.snack("Your message")
-                onCustomSnack(view)
+                onCustomSnack(view, userEntry)
 
 
                 try {
                     rand.apply {
-                        val userEntry = userInput.text.toString()
+
                         val hashTagList = randomizedHashTagList(validateHashTagList(userEntry), "full")
                         hashTagList.third.forEach {
                             addChip(it , chipContainer)
@@ -97,10 +112,20 @@ class MainFragment: Fragment(R.layout.fragment_main) {
         myClipboard.setPrimaryClip(myClip!!)
     }
 
-    private fun onCustomSnack(view: View){
+    private fun onCustomSnack(view: View, incomingData: String){
         val snackbar = Snackbar.make(view, "save new #hashtags?", Snackbar.LENGTH_LONG)
         snackbar.setActionTextColor(Color.WHITE)
         snackbar.setAction("Save"){
+            val dm = Randomize()
+            val db = context?.let { RandomizeDatabase(it) }
+            val repository = RandomizeRepository(db as RandomizeDatabase)
+            val factory = HashTagViewModelFactory(repository)
+            val viewModel = ViewModelProvider(this, factory).get(HashTagViewModel::class.java)
+
+            for(i in dm.newTest(incomingData)){
+                viewModel.update(RandomizeEntity(i))
+            }
+
 
         }
         snackbar.show()

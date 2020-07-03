@@ -9,5 +9,6 @@ class RandomizeRepository(private val db: RandomizeDatabase
     suspend fun update(hashtag: RandomizeEntity ) = db.RandomizeDao().update(hashtag)
     suspend fun delete(hashtag: RandomizeEntity) = db.RandomizeDao().delete(hashtag)
     suspend fun insert(hashtag: RandomizeEntity) = db.RandomizeDao().insertAll(hashtag)
-    fun getAllHashTags() =db.RandomizeDao().getAll()
+    fun getAllHashTags() = db.RandomizeDao().getAll()
+    fun getAllStoredTags() = db.RandomizeDao().getAllStored()
 }

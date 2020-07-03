@@ -12,11 +12,6 @@ import kotlin.random.Random
 
 class RandomizeRecyclerAdapter(var hashtag: List<RandomizeEntity>, private val viewModel: HashTagViewModel): RecyclerView.Adapter<RandomizeRecyclerAdapter.RandomizeViewHolder>() {
 
-
-
-
-
-
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int

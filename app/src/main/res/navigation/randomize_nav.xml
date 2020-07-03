@@ -10,9 +10,16 @@
         <action
             android:id="@+id/action_mainFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_storageFragment"
+            app:destination="@id/storageFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.fair.hastag_randomizer.view.SettingsFragment"
         android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/storageFragment"
+        android:name="com.fair.hastag_randomizer.view.StorageFragment"
+        android:label="StorageFragment" />
 </navigation>

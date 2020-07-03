@@ -1,5 +1,6 @@
 package com.fair.hastag_randomizer.repository
 
+import com.fair.hastag_randomizer.repository.storage.RandomizeEntity
 import kotlin.random.Random
 
 class Randomize {
@@ -55,5 +56,26 @@ class Randomize {
             else -> Triple(0, "Something went wrong :(", mutableListOf("0,0,0,0"))
         }
     }
+
+    fun newTest(incomingData: String): MutableList<String>{
+        return chipConversion(validateHashTagList(incomingData))
+
+    }
+    fun compareIncomingStorage(storage: MutableList<RandomizeEntity>, incomingData: String): MutableList<String> {
+        val newData = mutableListOf<String>()
+        val incomingDataList = chipConversion(validateHashTagList(incomingData))
+
+        for (i in incomingDataList) {
+            for(j in storage){
+                if (j.hashtag == i.trim()){
+                    continue
+                } else newData.add(i.trim())
+        }
+
+            }
+        return newData
+    }
+
+
 
 }

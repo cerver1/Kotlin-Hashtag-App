@@ -6,6 +6,5 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class RandomizeEntity (
-    @PrimaryKey(autoGenerate = true)var id: Int,
-    @ColumnInfo(name = "hashtag") val hashtag: String
+    @ColumnInfo(name = "hashtag") @PrimaryKey val hashtag: String
 )

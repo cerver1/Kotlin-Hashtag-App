@@ -16,6 +16,8 @@ class HashTagViewModel(private val repository: RandomizeRepository): ViewModel()
         repository.delete(hashtag)
     }
     fun getAllHashTags() = repository.getAllHashTags()
+    fun getAllStored() = repository.getAllStoredTags()
+
 
 
 }
