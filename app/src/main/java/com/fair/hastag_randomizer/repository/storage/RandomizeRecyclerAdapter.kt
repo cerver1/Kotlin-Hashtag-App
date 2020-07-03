@@ -25,6 +25,9 @@ class RandomizeRecyclerAdapter(var hashtag: List<RandomizeEntity>, private val v
     override fun onBindViewHolder(holder: RandomizeViewHolder, position: Int) {
         val currentHashtag = hashtag[position]
         holder.itemView.hashContainer.text = currentHashtag.hashtag
+        holder.itemView.setOnClickListener {
+            viewModel.delete(currentHashtag)
+        }
 
     }
 

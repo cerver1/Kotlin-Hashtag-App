@@ -9,14 +9,13 @@ import kotlinx.coroutines.launch
 
 class HashTagViewModel(private val repository: RandomizeRepository): ViewModel() {
 
-    fun update(hashtag: RandomizeEntity) = CoroutineScope(Dispatchers.Main).launch {
-        repository.update(hashtag)
+    fun insert(hashtag: RandomizeEntity) = CoroutineScope(Dispatchers.Main).launch {
+        repository.insert(hashtag)
     }
     fun delete(hashtag: RandomizeEntity) = CoroutineScope(Dispatchers.Main).launch {
         repository.delete(hashtag)
     }
     fun getAllHashTags() = repository.getAllHashTags()
-    fun getAllStored() = repository.getAllStoredTags()
 
 
 

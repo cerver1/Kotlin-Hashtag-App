@@ -1,20 +1,10 @@
 package com.fair.hastag_randomizer.view
 
 
-import android.content.ClipboardManager
-import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
-import android.view.View
-import android.view.WindowManager
 
 import androidx.appcompat.app.AppCompatActivity
 import com.fair.hastag_randomizer.databinding.ActivityMainBinding
-import com.fair.hastag_randomizer.repository.Randomize
-import com.fair.hastag_randomizer.repository.storage.RandomizeDatabase
-import com.fair.hastag_randomizer.repository.storage.SharedQuery
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     
