@@ -14,10 +14,10 @@
     <string name="action_exit">Exit</string>
 
     <string-array name="returnSizeList">
-        small,
-        medium,
-        large,
-        random
+        <item>small</item>
+        <item>medium</item>
+        <item>large</item>
+        <item>random</item>
     </string-array>
 
 </resources>

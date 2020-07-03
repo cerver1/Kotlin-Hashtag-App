@@ -5,15 +5,12 @@
 
     <ListPreference
         app:key="returnSize"
-        android:title="return size"
-        app:summary="Change the portion size of hashtags you get back"
-        android:icon="@drawable/ic_confirm"
+        android:title="Return Size"
+        app:summary="Choose the number of hashtags you get back"
+        android:icon="@drawable/ic_plus_one"
         android:entries="@array/returnSizeList"
         android:entryValues="@array/returnSizeList"
         android:defaultValue="@string/full"
-        android:dialogTitle="Return Size"
-        android:dialogMessage="Choose your return size"
-        android:positiveButtonText="Ok"
-        android:negativeButtonText="Cancel" />
+        android:dialogTitle="Return Size" />
 
 </PreferenceScreen>

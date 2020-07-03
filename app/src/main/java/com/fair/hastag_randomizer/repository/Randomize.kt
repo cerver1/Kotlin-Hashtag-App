@@ -5,10 +5,10 @@ import kotlin.random.Random
 
 class Randomize {
 
-    fun finalizeHashTags(randomizedHashTags: String): String{
+    fun finalizeHashTags(randomizedHashTags: String?): String?{
 
-        return randomizedHashTags.replace("\\s".toRegex(), "").replace("[", "#").replace(",", "#")
-            .replace("\\s".toRegex(), "").removeSuffix("]")
+        return randomizedHashTags?.replace("\\s".toRegex(), "")?.replace("[", "#")?.replace(",", "#")
+            ?.replace("\\s".toRegex(), "")?.removeSuffix("]")
 
     }
 

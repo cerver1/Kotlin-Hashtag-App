@@ -10,6 +10,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.preference.PreferenceManager
 import com.fair.hastag_randomizer.R
 import com.fair.hastag_randomizer.databinding.FragmentMainBinding
 import com.fair.hastag_randomizer.repository.Randomize
@@ -33,6 +34,7 @@ class MainFragment: Fragment(R.layout.fragment_main) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
         _binding = FragmentMainBinding.bind(view)
+        val storedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
 
 
         myClipboard = activity?.getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
@@ -66,8 +68,11 @@ class MainFragment: Fragment(R.layout.fragment_main) {
                 try {
                     rand.apply {
 
-                        val hashTagList = randomizedHashTagList(validateHashTagList(userEntry), "full")
-                        hashTagList.third.forEach {
+                        val rSize = storedPreferences.getString("returnSize", "")
+                        val hashTagList = rSize?.let { rs ->
+                            randomizedHashTagList(validateHashTagList(userEntry), rs)
+                        }
+                        hashTagList?.third?.forEach {
                             addChip(it , chipContainer)
                         }
                         if(userInput.isVisible){
@@ -76,7 +81,7 @@ class MainFragment: Fragment(R.layout.fragment_main) {
                         }
 
                         try {
-                            copy(finalizeHashTags(hashTagList.second))
+                            copy(finalizeHashTags(hashTagList?.second))
                         } catch(e: Exception) {
                             context.toast("unable to copy hashtags")}
 
@@ -102,7 +107,7 @@ class MainFragment: Fragment(R.layout.fragment_main) {
         group.addView(chip as View)
     }
 
-    private fun copy(text: String) {
+    private fun copy(text: String?) {
         val myClip = ClipData.newPlainText("NewRandom", text)
         myClipboard.setPrimaryClip(myClip!!)
     }
