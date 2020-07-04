@@ -51,7 +51,7 @@ class Randomize {
         return when(size) {
             "small" -> Triple(s, randomizedList.take(s).toString(), chipConversion(randomizedList.take(s).toMutableList()))
             "medium" -> Triple(m, randomizedList.take(m).toString(), chipConversion(randomizedList.take(m).toMutableList()))
-            "full" -> Triple(f, randomizedList.take(f).toString(), chipConversion(randomizedList.take(f).toMutableList()))
+            "large" -> Triple(f, randomizedList.take(f).toString(), chipConversion(randomizedList.take(f).toMutableList()))
             "random" -> Triple(r, randomizedList.take(r).toString(), chipConversion(randomizedList.take(r).toMutableList()))
             else -> Triple(0, "Something went wrong :(", mutableListOf("0,0,0,0"))
         }

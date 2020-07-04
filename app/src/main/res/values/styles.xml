@@ -12,4 +12,8 @@
         <item name="android:windowNoTitle">true</item> -->
     </style>
 
+    <style name="MainMenu" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:textColorSecondary">@color/colorLight</item>
+    </style>
+
 </resources>

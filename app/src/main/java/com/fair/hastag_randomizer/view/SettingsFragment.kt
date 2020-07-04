@@ -1,6 +1,7 @@
 package com.fair.hastag_randomizer.view
 
 import android.os.Bundle
+import android.view.View
 import androidx.preference.PreferenceFragmentCompat
 import com.fair.hastag_randomizer.R
 
