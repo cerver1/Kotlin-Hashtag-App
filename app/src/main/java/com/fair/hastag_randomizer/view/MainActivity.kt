@@ -10,13 +10,23 @@ class MainActivity : AppCompatActivity() {
     
      /**
      
-         TO_DO_
+      wish_list
 
-         Needs README update 
+      Updated Readme
 
-         Needs Radio buttons for user output size selection
+      Global toolbar for the app(main purpose to give the settings page a toolbar)
 
-         Needs to be modeled after notes app OnePlus
+      Clean code for better MVVM Arch
+
+      Onboarding of the app
+
+      Search feature in saved Hashtags for easier sorting
+
+      Testing for different use-cases instead of pasting -> {
+        Assume the user won't do the right thing what if they paste a hashtag without a hash symbol?
+        what if they paste some words with hashtags and others without? }
+
+      Categorized Storage of saved Hashtags(group by similar name, etc)
      
      */
 
