@@ -10,9 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.fair.hastag_randomizer.R
 import com.fair.hastag_randomizer.databinding.FragmentStorageBinding
 import com.fair.hastag_randomizer.repository.RandomizeRepository
-import com.fair.hastag_randomizer.repository.storage.RandomizeDatabase
-import com.fair.hastag_randomizer.repository.storage.RandomizeRecyclerAdapter
-import kotlinx.android.synthetic.main.fragment_main.*
+import com.fair.hastag_randomizer.repository.storage.room.RandomizeDatabase
+import com.fair.hastag_randomizer.repository.storage.room.RandomizeRecyclerAdapter
 
 
 class StorageFragment: Fragment(R.layout.fragment_storage) {
@@ -24,7 +23,11 @@ class StorageFragment: Fragment(R.layout.fragment_storage) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentStorageBinding.bind(view)
 
-        val db = context?.let { RandomizeDatabase(it) }
+        val db = context?.let {
+            RandomizeDatabase(
+                it
+            )
+        }
         val repository = RandomizeRepository(db as RandomizeDatabase)
         val factory = HashTagViewModelFactory(repository)
         val viewModel = ViewModelProvider(this, factory).get(HashTagViewModel::class.java)
@@ -40,7 +43,11 @@ class StorageFragment: Fragment(R.layout.fragment_storage) {
 
 
 
-            val adapter = RandomizeRecyclerAdapter(listOf(), viewModel)
+            val adapter =
+                RandomizeRecyclerAdapter(
+                    listOf(),
+                    viewModel
+                )
 
             savedRecycler.layoutManager = LinearLayoutManager(context)
             savedRecycler.adapter = adapter

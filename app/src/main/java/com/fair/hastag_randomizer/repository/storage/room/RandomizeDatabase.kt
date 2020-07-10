@@ -1,4 +1,4 @@
-package com.fair.hastag_randomizer.repository.storage
+package com.fair.hastag_randomizer.repository.storage.room
 
 import android.content.Context
 import androidx.room.Database
@@ -15,8 +15,13 @@ abstract class RandomizeDatabase: RoomDatabase() {
         @Volatile private var instance: RoomDatabase? = null
         private val LOCK = Any()
 
-        operator fun invoke(context: Context) = instance ?: synchronized(LOCK){
-            instance ?: buildDatabase(context).also{ instance = it}
+        operator fun invoke(context: Context) = instance
+            ?: synchronized(LOCK){
+            instance
+                ?: buildDatabase(
+                    context
+                )
+                    .also{ instance = it}
         }
 
         private fun buildDatabase(context: Context) = Room.databaseBuilder(context.applicationContext,

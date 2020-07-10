@@ -1,4 +1,4 @@
-package com.fair.hastag_randomizer.repository.storage
+package com.fair.hastag_randomizer.repository.storage.room
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

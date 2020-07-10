@@ -1,4 +1,4 @@
-package com.fair.hastag_randomizer.repository.storage
+package com.fair.hastag_randomizer.repository.storage.room
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,8 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.fair.hastag_randomizer.R
 import com.fair.hastag_randomizer.view.HashTagViewModel
 import kotlinx.android.synthetic.main.recycler_storage.view.*
-import kotlinx.coroutines.processNextEventInCurrentThread
-import kotlin.random.Random
 
 class RandomizeRecyclerAdapter(var hashtag: List<RandomizeEntity>, private val viewModel: HashTagViewModel): RecyclerView.Adapter<RandomizeRecyclerAdapter.RandomizeViewHolder>() {
 

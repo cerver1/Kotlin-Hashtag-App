@@ -1,6 +1,6 @@
 package com.fair.hastag_randomizer.repository
 
-import com.fair.hastag_randomizer.repository.storage.RandomizeEntity
+import com.fair.hastag_randomizer.repository.storage.room.RandomizeEntity
 import kotlin.random.Random
 
 class Randomize {
@@ -49,10 +49,10 @@ class Randomize {
 
         // radio button group for to select size
         return when(size) {
-            "small" -> Triple(s, randomizedList.take(s).toString(), chipConversion(randomizedList.take(s).toMutableList()))
-            "medium" -> Triple(m, randomizedList.take(m).toString(), chipConversion(randomizedList.take(m).toMutableList()))
-            "large" -> Triple(f, randomizedList.take(f).toString(), chipConversion(randomizedList.take(f).toMutableList()))
-            "random" -> Triple(r, randomizedList.take(r).toString(), chipConversion(randomizedList.take(r).toMutableList()))
+            "Small" -> Triple(s, randomizedList.take(s).toString(), chipConversion(randomizedList.take(s).toMutableList()))
+            "Medium" -> Triple(m, randomizedList.take(m).toString(), chipConversion(randomizedList.take(m).toMutableList()))
+            "Large" -> Triple(f, randomizedList.take(f).toString(), chipConversion(randomizedList.take(f).toMutableList()))
+            "Random" -> Triple(r, randomizedList.take(r).toString(), chipConversion(randomizedList.take(r).toMutableList()))
             else -> Triple(0, "Something went wrong :(", mutableListOf("0,0,0,0"))
         }
     }

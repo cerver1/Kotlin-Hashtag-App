@@ -2,7 +2,7 @@ package com.fair.hastag_randomizer.view
 
 import androidx.lifecycle.ViewModel
 import com.fair.hastag_randomizer.repository.RandomizeRepository
-import com.fair.hastag_randomizer.repository.storage.RandomizeEntity
+import com.fair.hastag_randomizer.repository.storage.room.RandomizeEntity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
