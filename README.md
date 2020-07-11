@@ -1,10 +1,10 @@
 <h1 align="center">Hashtag Randomizer[🛠 WORK-IN-PROGRESS 🛠]</h1>
 
 <p align="center">
-  <img src="https://github.com/cerver1/Kotlin-Instagram-Hashtag-Randomizer/blob/master/RandomizeImg/screen%201.png" width='300'>
-  <img src="https://github.com/cerver1/Kotlin-Instagram-Hashtag-Randomizer/blob/master/RandomizeImg/screen%202.png" width='300'>
-  <img src="https://github.com/cerver1/Kotlin-Instagram-Hashtag-Randomizer/blob/master/RandomizeImg/screen%203.png" width='300'>
-  <img src="https://github.com/cerver1/Kotlin-Instagram-Hashtag-Randomizer/blob/master/RandomizeImg/screen%204.png" width='300'>
+  <img src="https://github.com/cerver1/Kotlin-Instagram-Hashtag-Randomizer/blob/master/RandomizeImg/screen%201.png" width='200'>
+  <img src="https://github.com/cerver1/Kotlin-Instagram-Hashtag-Randomizer/blob/master/RandomizeImg/screen%202.png" width='200'>
+  <img src="https://github.com/cerver1/Kotlin-Instagram-Hashtag-Randomizer/blob/master/RandomizeImg/screen%203.png" width='200'>
+  <img src="https://github.com/cerver1/Kotlin-Instagram-Hashtag-Randomizer/blob/master/RandomizeImg/screen%204.png" width='200'>
 </p>
 
 <p align='center'>
