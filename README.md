@@ -3,9 +3,6 @@
 <p align="center">
   <img src="https://github.com/cerver1/Kotlin-Instagram-Hashtag-Randomizer/blob/master/RandomizeImg/screen%201.png" width='300'>
   <img src="https://github.com/cerver1/Kotlin-Instagram-Hashtag-Randomizer/blob/master/RandomizeImg/screen%202.png" width='300'>
-</p>
-  
-<p align="center">
   <img src="https://github.com/cerver1/Kotlin-Instagram-Hashtag-Randomizer/blob/master/RandomizeImg/screen%203.png" width='300'>
   <img src="https://github.com/cerver1/Kotlin-Instagram-Hashtag-Randomizer/blob/master/RandomizeImg/screen%204.png" width='300'>
 </p>
