@@ -1,5 +1,6 @@
 package com.fair.hastag_randomizer.view
 
+import android.app.Activity
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context.CLIPBOARD_SERVICE
@@ -21,6 +22,7 @@ import com.fair.hastag_randomizer.repository.toast
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.snackbar.Snackbar
+import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt
 
 
 class MainFragment: Fragment(R.layout.fragment_main) {
@@ -38,6 +40,7 @@ class MainFragment: Fragment(R.layout.fragment_main) {
         _binding = FragmentMainBinding.bind(view)
         myClipboard = activity?.getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
 
+        showFabPrompt()
         viewBinding.apply {
 
             mainToolbar.inflateMenu(R.menu.menu_view)
@@ -133,6 +136,29 @@ class MainFragment: Fragment(R.layout.fragment_main) {
         }
         snackbar.show()
     }
+
+    private fun showFabPrompt() {
+        //check if its already used if so then skip
+        MaterialTapTargetPrompt.Builder(context as Activity)
+            .setTarget(viewBinding.randomizeBtn)
+            .setPrimaryText("Click me!")
+            .setSecondaryText("I'm a floating action button aka FAB.")
+            .setBackButtonDismissEnabled(true)
+            .setPromptStateChangeListener { prompt, state ->
+
+                if (state == MaterialTapTargetPrompt.STATE_FOCAL_PRESSED
+                    || state == MaterialTapTargetPrompt.STATE_NON_FOCAL_PRESSED){
+
+                    //set shared pref
+                    // move to another item showButtonPrompt()
+                }
+
+            }
+
+            .show()
+
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
