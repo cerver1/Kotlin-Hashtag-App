@@ -8,7 +8,7 @@ import com.fair.hastag_randomizer.R
 import com.fair.hastag_randomizer.view.HashTagViewModel
 import kotlinx.android.synthetic.main.recycler_storage.view.*
 
-class RandomizeRecyclerAdapter(var hashtag: List<RandomizeEntity>, private val viewModel: HashTagViewModel): RecyclerView.Adapter<RandomizeRecyclerAdapter.RandomizeViewHolder>() {
+class RandomizeRecyclerAdapter(var hashtag: ArrayList<RandomizeEntity>, private val viewModel: HashTagViewModel): RecyclerView.Adapter<RandomizeRecyclerAdapter.RandomizeViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,

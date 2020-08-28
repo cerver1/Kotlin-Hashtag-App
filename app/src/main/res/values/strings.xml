@@ -12,6 +12,7 @@
     <string name="action_settings">Settings</string>
     <string name="action_share">Share</string>
     <string name="action_exit">Exit</string>
+    <string name="search">Search</string>
 
     <string-array name="returnSizeList">
         <item>Small</item>

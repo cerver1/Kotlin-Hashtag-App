@@ -36,11 +36,12 @@ class MainFragment: Fragment(R.layout.fragment_main) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setHasOptionsMenu(true)
         _binding = FragmentMainBinding.bind(view)
         myClipboard = activity?.getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+        pref = SharedPreference(context)
 
         showFabPrompt()
+
         viewBinding.apply {
 
             mainToolbar.inflateMenu(R.menu.menu_view)
@@ -59,16 +60,16 @@ class MainFragment: Fragment(R.layout.fragment_main) {
                 }
             }
 
-            context.let { that ->
+            returnSize = pref.get("ReturnSize").toString()
 
-                pref = SharedPreference(that)
+            if (returnSize.isEmpty()){
+                pref.saveR("Large")
                 returnSize = pref.get("ReturnSize").toString()
-                if (returnSize.isEmpty()){
-                    pref.saveR("Large")
-                    returnSize = pref.get("ReturnSize").toString()
-                }
+            }
 
-                randomizeBtn.setOnClickListener {
+            randomizeBtn.setOnClickListener {
+
+                if (!userInput.text.isNullOrEmpty()) {
 
                     val userEntry = userInput.text.toString()
                     onCustomSnack(view, userEntry)
@@ -76,30 +77,31 @@ class MainFragment: Fragment(R.layout.fragment_main) {
                     try {
                         rand.apply {
 
-                            val hashTagList =
-                                randomizedHashTagList(validateHashTagList(userEntry), returnSize)
-                                hashTagList.third.forEach {
-                                    addChip(it , chipContainer)
+                            val hashTagList = randomizedHashTagList(validateHashTagList(userEntry), returnSize)
+                            hashTagList.third.forEach {
+                                addChip(it , chipContainer)
                             }
-                            if(userInput.isVisible){
+
+                            if(userInput.isVisible) {
                                 chipGroupContainer.visibility = View.VISIBLE
                                 userInput.visibility = View.GONE
                             }
 
                             try {
                                 copy(finalizeHashTags(hashTagList.second))
-                            } catch(e: Exception) { that.toast("unable to copy hashtags")}
+                            } catch(e: Exception) {
+                                context.toast("unable to copy hashtags")
+                            }
                         }
-                    }catch(e: Exception) { that.toast("Randomized and copied")}
-
+                    } catch(e: Exception) {
+                        context.toast("Randomized and copied")
+                    }
                 }
+
+
             }
 
-
-
         }
-
-
 
     }
 
@@ -138,27 +140,24 @@ class MainFragment: Fragment(R.layout.fragment_main) {
     }
 
     private fun showFabPrompt() {
-        //check if its already used if so then skip
-        MaterialTapTargetPrompt.Builder(context as Activity)
-            .setTarget(viewBinding.randomizeBtn)
-            .setPrimaryText("Click me!")
-            .setSecondaryText("I'm a floating action button aka FAB.")
-            .setBackButtonDismissEnabled(true)
-            .setPromptStateChangeListener { prompt, state ->
+        if (pref.isFirstRun()) {
+            MaterialTapTargetPrompt.Builder(context as Activity)
+                .setTarget(viewBinding.randomizeBtn)
+                .setPrimaryText("Randomize")
+                .setSecondaryText("After typing or pasting a group of Hash-tags within the text box \"Click Me\".")
+                .setBackButtonDismissEnabled(true)
+                .setPromptStateChangeListener { _, state ->
 
-                if (state == MaterialTapTargetPrompt.STATE_FOCAL_PRESSED
-                    || state == MaterialTapTargetPrompt.STATE_NON_FOCAL_PRESSED){
+                    if (state == MaterialTapTargetPrompt.STATE_FOCAL_PRESSED
+                        || state == MaterialTapTargetPrompt.STATE_NON_FOCAL_PRESSED){
+                        pref.setFirstRun()
+                    }
 
-                    //set shared pref
-                    // move to another item showButtonPrompt()
-                }
+                }.show()
+        }
 
-            }
-
-            .show()
 
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

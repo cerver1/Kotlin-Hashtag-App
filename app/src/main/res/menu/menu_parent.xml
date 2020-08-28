@@ -2,9 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_size"
-        app:showAsAction="always"
-        android:title=""
-        android:iconTint="@color/colorLight"/>
+        android:id="@+id/action_search"
+        app:showAsAction="always|collapseActionView"
+        android:title="@string/search"
+        android:icon="@drawable/ic_search"
+        app:iconTint="@color/colorLight"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"/>
+
 
 </menu>

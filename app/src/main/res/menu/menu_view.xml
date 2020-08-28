@@ -6,7 +6,7 @@
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"
-        android:iconTint="@color/colorLight"/>
+        app:iconTint="@color/colorLight"/>
 
     <item
         android:id="@+id/action_store"
