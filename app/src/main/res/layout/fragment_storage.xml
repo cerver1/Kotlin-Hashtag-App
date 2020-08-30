@@ -21,8 +21,6 @@
             app:titleTextColor="@android:color/white"/>
 
 
-
-
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
