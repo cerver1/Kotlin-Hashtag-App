@@ -1,16 +1,13 @@
 package com.fair.hastag_randomizer.view
 
-import android.app.SearchManager
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
-import android.widget.SearchView
+import android.widget.Toast
+import androidx.appcompat.widget.SearchView
+
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,26 +24,13 @@ class StorageFragment: Fragment(R.layout.fragment_storage) {
     private var _binding: FragmentStorageBinding? = null
     private val viewBinding get() = _binding!!
 
-    private lateinit var displayList: MutableList<RandomizeEntity>
-    private lateinit var arrayList: ArrayList<RandomizeEntity>
-
-    private var searchView: SearchView? = null
-    private var queryTextListener: SearchView.OnQueryTextListener? = null
-
     private lateinit var viewModel : HashTagViewModel
 
     private lateinit var mainAdapter: RandomizeRecyclerAdapter
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentStorageBinding.bind(view)
-
 
         val db = context?.let {
             RandomizeDatabase(
@@ -59,54 +43,33 @@ class StorageFragment: Fragment(R.layout.fragment_storage) {
 
         viewBinding.apply {
 
-            storeToolbar.inflateMenu(R.menu.storage_menu)
             storeToolbar.setNavigationIcon(R.drawable.ic_home)
             storeToolbar.setNavigationOnClickListener {
                 Navigation.findNavController(view).navigate(R.id.action_storageFragment_to_mainFragment)
             }
 
-            mainAdapter = RandomizeRecyclerAdapter(arrayListOf(), viewModel)
+            storageSearchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                   return false
+                }
 
-            savedRecycler.layoutManager = LinearLayoutManager(context)
-            savedRecycler.adapter = mainAdapter
-
-            viewModel.getAllHashTags().observe(viewLifecycleOwner, {
-                displayList = it as MutableList<RandomizeEntity>
-                mainAdapter.hashtag = displayList
-                mainAdapter.notifyDataSetChanged()
-
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    mainAdapter.filter.filter(newText)
+                    return false
+                }
             })
 
+            viewModel.getAllHashTags().observe(viewLifecycleOwner, Observer {
+                mainAdapter = RandomizeRecyclerAdapter(it as ArrayList<RandomizeEntity>)
+                savedRecycler.layoutManager = LinearLayoutManager(context)
+                savedRecycler.adapter = mainAdapter
+            })
         }
-
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.storage_menu, menu)
-        val searchItem = menu.findItem(R.id.action_search)
-        val searchView = searchItem?.actionView as SearchView
-
-        searchView.queryHint = getString(R.string.search)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-
-
-    private fun queryAttempt(searchText: String) {
-        viewModel.getAllHashTags().observe(viewLifecycleOwner, {
-            it.forEach { item ->
-                if (item.hashtag.contains(searchText)) {
-                    arrayList.add(item)
-                }
-            }
-            mainAdapter.hashtag = arrayList
-            mainAdapter.notifyDataSetChanged()
-
-        })
     }
 
     override fun onDestroyView() {
-        _binding = null
         super.onDestroyView()
+        _binding = null
     }
 }
 

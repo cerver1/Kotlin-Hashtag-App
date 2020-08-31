@@ -20,6 +20,16 @@
             app:title="Storage"
             app:titleTextColor="@android:color/white"/>
 
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/storageSearchBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/drw_search_back"
+            android:textCursorDrawable="@null"
+            app:iconifiedByDefault="false"
+            app:queryBackground="@null"
+            android:layout_margin="15dp"/>
+
 
     </com.google.android.material.appbar.AppBarLayout>
 
