@@ -22,9 +22,11 @@
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/storageSearchBar"
+            android:theme="@style/SearchViewOverlay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/drw_search_back"
+            app:queryHint="@string/search"
             android:textCursorDrawable="@null"
             app:iconifiedByDefault="false"
             app:queryBackground="@null"

@@ -16,4 +16,9 @@
         <item name="android:textColorSecondary">@color/colorLight</item>
     </style>
 
+    <style name="SearchViewOverlay">
+        <item name="android:textColorPrimary">@color/colorPrimary</item>
+        <item name="colorControlNormal">@color/colorPrimaryDark</item>
+    </style>
+
 </resources>
