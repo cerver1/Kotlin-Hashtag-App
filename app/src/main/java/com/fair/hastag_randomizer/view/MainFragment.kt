@@ -49,7 +49,7 @@ class MainFragment: Fragment(R.layout.fragment_main) {
                 when (item.itemId) {
                     R.id.action_settings -> {
                         Navigation.findNavController(view)
-                            .navigate(R.id.action_mainFragment_to_settingsFragment)
+                            .navigate(R.id.action_mainFragment_to_settingsContainerFragment)
                         true }
                     R.id.action_store -> {
                         Navigation.findNavController(view)

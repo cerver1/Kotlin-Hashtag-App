@@ -1,33 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/randomize_nav"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/randomize_nav"
     app:startDestination="@id/mainFragment">
 
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.fair.hastag_randomizer.view.MainFragment"
-        android:label="MainFragment" >
-        <action
-            android:id="@+id/action_mainFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_storageFragment"
             app:destination="@id/storageFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.fair.hastag_randomizer.view.SettingsFragment"
-        android:label="SettingsFragment" >
         <action
-            android:id="@+id/action_settingsFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            android:id="@+id/action_mainFragment_to_settingsContainerFragment"
+            app:destination="@id/settingsContainerFragment" />
     </fragment>
     <fragment
         android:id="@+id/storageFragment"
         android:name="com.fair.hastag_randomizer.view.StorageFragment"
-        android:label="StorageFragment" >
+        android:label="StorageFragment"
+        tools:layout="@layout/fragment_storage">
         <action
             android:id="@+id/action_storageFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsContainerFragment"
+        android:name="com.fair.hastag_randomizer.view.SettingsContainerFragment"
+        android:label="SettingsContainerFragment"
+        tools:layout="@layout/fragment_settings_container">
+        <action
+            android:id="@+id/action_settingsContainerFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
 </navigation>

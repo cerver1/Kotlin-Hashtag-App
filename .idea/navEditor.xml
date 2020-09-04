@@ -19,7 +19,7 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_mainFragment_to_settingsFragment">
+                            <entry key="action_mainFragment_to_settingsContainerFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -34,18 +34,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="settingsFragment">
+                  <entry key="settingsContainerFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="493" />
-                            <option name="y" value="278" />
+                            <option name="x" value="494" />
+                            <option name="y" value="252" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_settingsFragment_to_mainFragment">
+                            <entry key="action_settingsContainerFragment_to_mainFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
